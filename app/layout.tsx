@@ -29,20 +29,22 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ROSProvider>
-          {/* Toggle button */}
-          <button
-            onClick={() => setOpen(!open)}
-            className="fixed top-4 left-4 z-50 bg-gray-800 text-white p-2 rounded"
-          >
-            ☰
-          </button>
-
+          {/* Sidebar with toggle */}
           <Sidebar open={open} />
 
+          {/* Toggle button - positioned after sidebar edge */}
+          <button
+            onClick={() => setOpen(!open)}
+            className={`fixed top-4 z-50 bg-gray-800 text-white p-2 rounded transition-all duration-300
+              ${open ? 'left-[17rem]' : 'left-[4.5rem]'}
+            `}
+          >
+            {open ? '◀' : '▶'}
+          </button>
+
           <main
-            className={`transition-all duration-300
+            className={`transition-all duration-300 h-screen overflow-hidden
               ${open ? 'ml-64' : 'ml-16'}
-              p-6 bg-gray-100 min-h-screen
             `}
           >
             {children}

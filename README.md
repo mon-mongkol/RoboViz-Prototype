@@ -55,4 +55,8 @@ roslaunch rosbridge_server rosbridge_websocket.launch
 
 roslaunch turtlebot3_slam turtlebot3_slam.launch slam_methods:=gmapping use_sim_time:=true
 
+rosrun tf2_web_republisher tf2_web_republisher
+
 xhost +local:docker
+
+roslaunch turtlebot3_navigation turtlebot3_navigation.launch map_file:=/root/firmware_update/map/my_map.yaml
